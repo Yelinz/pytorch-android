@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <item
+        android:id="@+id/action_search"
+        android:icon="@android:drawable/arrow_down_float"
+        android:title="@string/reduce" />
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@android:drawable/ic_btn_speak_now"
+        android:title="@string/reuse" />
+    <item
+        android:id="@+id/action_navigation"
+        android:icon="@android:drawable/btn_minus"
+        android:title="@string/recycle" />
+</menu>
