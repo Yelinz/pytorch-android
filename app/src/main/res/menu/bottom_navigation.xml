@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <item
         android:id="@+id/action_search"
-        android:icon="@android:drawable/arrow_down_float"
-        android:title="@string/reduce" />
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/home" />
     <item
         android:id="@+id/action_settings"
-        android:icon="@android:drawable/ic_btn_speak_now"
-        android:title="@string/reuse" />
+        android:icon="@drawable/baseline_camera_24"
+        android:title="@string/scan" />
     <item
-        android:id="@+id/action_navigation"
-        android:icon="@android:drawable/btn_minus"
-        android:title="@string/recycle" />
+        android:id="@+id/navigation_map"
+        android:icon="@drawable/baseline_explore_24"
+        android:title="@string/explore"
+        />
 </menu>
