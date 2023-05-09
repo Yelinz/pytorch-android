@@ -4,15 +4,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
     <item
-        android:id="@+id/action_search"
+        android:id="@+id/nav_home"
         android:icon="@drawable/baseline_home_24"
         android:title="@string/home" />
     <item
-        android:id="@+id/action_settings"
+        android:id="@+id/nav_scan"
         android:icon="@drawable/baseline_camera_24"
         android:title="@string/scan" />
     <item
-        android:id="@+id/navigation_map"
+        android:id="@+id/nav_map"
         android:icon="@drawable/baseline_explore_24"
         android:title="@string/explore"
         />

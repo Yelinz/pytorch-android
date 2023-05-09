@@ -9,4 +9,6 @@
     <string name="home">Home</string>
     <string name="scan">Scan</string>
     <string name="explore">Explore</string>
+    <string name="aluminum">Aluminum</string>
+    <string name="cardboard">Cardboard</string>
 </resources>

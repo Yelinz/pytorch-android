@@ -5,7 +5,7 @@ android {
 
     defaultConfig {
         applicationId "org.pytorch.demo.objectdetection"
-        minSdkVersion 30
+        minSdkVersion 29
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
@@ -40,4 +40,7 @@ dependencies {
 
     implementation 'org.pytorch:pytorch_android_lite:1.10.0'
     implementation 'org.pytorch:pytorch_android_torchvision_lite:1.10.0'
+
+    // map
+    implementation 'org.osmdroid:osmdroid-android:6.1.16'
 }
