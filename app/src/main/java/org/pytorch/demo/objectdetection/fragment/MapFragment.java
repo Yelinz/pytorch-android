@@ -10,6 +10,7 @@ import org.osmdroid.api.IMapController;
 import org.osmdroid.tileprovider.tilesource.ITileSource;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 import org.pytorch.demo.objectdetection.R;
@@ -18,7 +19,7 @@ import org.pytorch.demo.objectdetection.R;
 public class MapFragment extends AbstractMapFragment {
     @Override
     public String getSampleTitle() {
-        return "Map Fragment in a view pager";
+        return "Map";
     }
 
     @Override
@@ -28,12 +29,13 @@ public class MapFragment extends AbstractMapFragment {
         final ITileSource tileSource = TileSourceFactory.MAPNIK;
         mMapView = new MapView(getActivity());
         mMapView.setTileSource(tileSource);
+        mMapView.setMultiTouchControls(true);
 
-        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(getActivity()), mMapView);
+        MyLocationNewOverlay mMyLocationOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireActivity()), mMapView);
         IMapController mapController = mMapView.getController();
 
         mMyLocationOverlay.setDrawAccuracyEnabled(true);
-        Runnable run = () -> getActivity().runOnUiThread(
+        Runnable run = () -> requireActivity().runOnUiThread(
                 () -> {
                     mapController.setCenter(mMyLocationOverlay.getMyLocation());
                     mapController.animateTo(mMyLocationOverlay.getMyLocation(), 17d, 900L);
@@ -43,6 +45,59 @@ public class MapFragment extends AbstractMapFragment {
         mMapView.getOverlays().add(mMyLocationOverlay);
 
         // add markers
+        Bundle args = getArguments();
+        if (args == null) {
+            ((LinearLayout) root.findViewById(R.id.mapview)).addView(mMapView);
+            return root;
+        }
+        String type = args.getString("type");
+        if (type == null) {
+            ((LinearLayout) root.findViewById(R.id.mapview)).addView(mMapView);
+            return root;
+        }
+
+        switch (type) {
+            case "aluminum":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "plastic":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "glass":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "paper":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "battery":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "electronics":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "clothes":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "furniture":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "metal":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+            case "cardboard":
+                new Marker(mMapView)
+                        .setPosition(mMyLocationOverlay.getMyLocation());
+                break;
+        }
 
         ((LinearLayout) root.findViewById(R.id.mapview)).addView(mMapView);
         return root;

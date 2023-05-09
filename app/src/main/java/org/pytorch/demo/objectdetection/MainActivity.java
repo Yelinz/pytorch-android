@@ -1,6 +1,7 @@
 package org.pytorch.demo.objectdetection;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -17,6 +18,7 @@ import org.osmdroid.config.Configuration;
 import org.pytorch.demo.objectdetection.fragment.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationBarView.OnItemSelectedListener {
@@ -43,8 +45,8 @@ public class MainActivity extends AppCompatActivity
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE
         });
     }
-    HomeFragment homeFragment = new HomeFragment();
-    MapFragment mapFragment = new MapFragment();
+    final HomeFragment homeFragment = new HomeFragment();
+    final MapFragment mapFragment = new MapFragment();
 
     @Override
     public boolean
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity
         }
         else if (id == R.id.nav_scan) {
             // open scan activity??
+            startActivity(new Intent(this, ScanActivity.class));
             return true;
         }
         else if (id == R.id.nav_map) {
@@ -74,12 +77,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        ArrayList<String> permissionsToRequest = new ArrayList<>();
-        for (int i = 0; i < grantResults.length; i++) {
-            permissionsToRequest.add(permissions[i]);
-        }
+        ArrayList<String> permissionsToRequest = new ArrayList<>(Arrays.asList(permissions).subList(0, grantResults.length));
         if (permissionsToRequest.size() > 0) {
             ActivityCompat.requestPermissions(
                     this,
