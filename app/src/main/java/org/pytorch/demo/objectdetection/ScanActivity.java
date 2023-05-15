@@ -90,6 +90,47 @@ public class ScanActivity extends AppCompatActivity implements Runnable {
 
         setContentView(R.layout.activity_scan);
 
+        Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(takePicture, 0);
+
+
+        mButtonDetect = findViewById(R.id.detectButton);
+        mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mButtonDetect.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                mButtonDetect.setEnabled(false);
+                mProgressBar.setVisibility(ProgressBar.VISIBLE);
+                mButtonDetect.setText(getString(R.string.run_model));
+
+                mImgScaleX = (float)mBitmap.getWidth() / PrePostProcessor.mInputWidth;
+                mImgScaleY = (float)mBitmap.getHeight() / PrePostProcessor.mInputHeight;
+
+                mIvScaleX = (mBitmap.getWidth() > mBitmap.getHeight() ? (float)mImageView.getWidth() / mBitmap.getWidth() : (float)mImageView.getHeight() / mBitmap.getHeight());
+                mIvScaleY  = (mBitmap.getHeight() > mBitmap.getWidth() ? (float)mImageView.getHeight() / mBitmap.getHeight() : (float)mImageView.getWidth() / mBitmap.getWidth());
+
+                mStartX = (mImageView.getWidth() - mIvScaleX * mBitmap.getWidth())/2;
+                mStartY = (mImageView.getHeight() -  mIvScaleY * mBitmap.getHeight())/2;
+
+                Thread thread = new Thread(ScanActivity.this);
+                thread.start();
+            }
+        });
+
+        try {
+            mModule = LiteModuleLoader.load(ScanActivity.assetFilePath(getApplicationContext(), "yolov5s.torchscript.ptl"));
+            BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("classes.txt")));
+            String line;
+            List<String> classes = new ArrayList<>();
+            while ((line = br.readLine()) != null) {
+                classes.add(line);
+            }
+            PrePostProcessor.mClasses = new String[classes.size()];
+            classes.toArray(PrePostProcessor.mClasses);
+        } catch (IOException e) {
+            Log.e("Object Detection", "Error reading assets", e);
+            finish();
+        }
+        /*
         try {
             mBitmap = BitmapFactory.decodeStream(getAssets().open(mTestImages[mImageIndex]));
         } catch (IOException e) {
@@ -134,8 +175,7 @@ public class ScanActivity extends AppCompatActivity implements Runnable {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
                         if (options[item].equals("Take Picture")) {
-                            Intent takePicture = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                            startActivityForResult(takePicture, 0);
+
                         }
                         else if (options[item].equals("Choose from Photos")) {
                             Intent pickPhoto = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -194,6 +234,7 @@ public class ScanActivity extends AppCompatActivity implements Runnable {
             Log.e("Object Detection", "Error reading assets", e);
             finish();
         }
+         */
     }
 
     @Override
