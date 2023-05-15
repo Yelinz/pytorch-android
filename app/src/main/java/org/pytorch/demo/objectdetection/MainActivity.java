@@ -3,6 +3,7 @@ package org.pytorch.demo.objectdetection;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -61,7 +62,12 @@ public class MainActivity extends AppCompatActivity
         bottomNavigationView.setSelectedItemId(R.id.nav_home);
 
         Context ctx = getApplicationContext();
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences("your_preferences_name", Context.MODE_PRIVATE);
+        Configuration.getInstance().load(ctx, sharedPreferences);
+        /*
+        Context ctx = getApplicationContext();
         Configuration.getInstance().load(ctx, PreferenceManager.getDefaultSharedPreferences(ctx));
+         */
         requestPermissionsIfNecessary(new String[]{
                 android.Manifest.permission.ACCESS_FINE_LOCATION,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -93,6 +99,7 @@ public class MainActivity extends AppCompatActivity
                 });
 
         try {
+            // TODO: change to custom model and classes
             mModule = LiteModuleLoader.load(MainActivity.assetFilePath(getApplicationContext(), "yolov5s.torchscript.ptl"));
             BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("classes.txt")));
             String line;
