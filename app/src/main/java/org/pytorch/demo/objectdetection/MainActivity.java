@@ -29,8 +29,12 @@ import org.pytorch.demo.objectdetection.fragment.*;
 import org.pytorch.torchvision.TensorImageUtils;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -69,12 +73,14 @@ public class MainActivity extends AppCompatActivity
                 result -> {
                     if (result.getResultCode() == RESULT_OK) {
                         // Handle the result
+                        assert result.getData() != null;
                         Bundle extras = result.getData().getExtras();
                         Bitmap capturedBitmap = (Bitmap) extras.get("data");
 
                         mImgScaleX = (float)capturedBitmap.getWidth() / PrePostProcessor.mInputWidth;
                         mImgScaleY = (float)capturedBitmap.getHeight() / PrePostProcessor.mInputHeight;
 
+                        // TODO: check if 640 works
                         mIvScaleX = (capturedBitmap.getWidth() > capturedBitmap.getHeight() ? (float)640 / capturedBitmap.getWidth() : (float)640 / capturedBitmap.getHeight());
                         mIvScaleY  = (capturedBitmap.getHeight() > capturedBitmap.getWidth() ? (float)640 / capturedBitmap.getHeight() : (float)640 / capturedBitmap.getWidth());
 
@@ -87,7 +93,7 @@ public class MainActivity extends AppCompatActivity
                 });
 
         try {
-            mModule = LiteModuleLoader.load(ScanActivity.assetFilePath(getApplicationContext(), "yolov5s.torchscript.ptl"));
+            mModule = LiteModuleLoader.load(MainActivity.assetFilePath(getApplicationContext(), "yolov5s.torchscript.ptl"));
             BufferedReader br = new BufferedReader(new InputStreamReader(getAssets().open("classes.txt")));
             String line;
             List<String> classes = new ArrayList<>();
@@ -179,5 +185,24 @@ public class MainActivity extends AppCompatActivity
         // Process the output to get the results
         final ArrayList<Result> results = PrePostProcessor.outputsToNMSPredictions(outputs, mImgScaleX, mImgScaleY, mIvScaleX, mIvScaleY, mStartX, mStartY);
 
-        // parse results and call information fragment
-    }}
+        // TODO: parse results and call information fragment
+    }
+    public static String assetFilePath(Context context, String assetName) throws IOException {
+        File file = new File(context.getFilesDir(), assetName);
+        if (file.exists() && file.length() > 0) {
+            return file.getAbsolutePath();
+        }
+
+        try (InputStream is = context.getAssets().open(assetName)) {
+            try (OutputStream os = Files.newOutputStream(file.toPath())) {
+                byte[] buffer = new byte[4 * 1024];
+                int read;
+                while ((read = is.read(buffer)) != -1) {
+                    os.write(buffer, 0, read);
+                }
+                os.flush();
+            }
+            return file.getAbsolutePath();
+        }
+    }
+}

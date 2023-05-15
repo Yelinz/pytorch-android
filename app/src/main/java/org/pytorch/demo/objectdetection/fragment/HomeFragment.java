@@ -14,6 +14,7 @@ public class HomeFragment extends Fragment {
 
     public HomeFragment(){
         // require a empty public constructor
+        // TODO: add more tiles, maybe programatically
     }
 
     @Override
@@ -31,6 +32,7 @@ public class HomeFragment extends Fragment {
              */
             Bundle args = new Bundle();
             args.putString("type", "aluminum");
+            // TODO: launch info fragment and from info provide a button to launch map fragment
             mapFragment.setArguments(args);
             getParentFragmentManager()
                     .beginTransaction()
