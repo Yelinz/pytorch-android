@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Rect;
+import android.icu.text.IDNA;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -38,6 +40,7 @@ import java.io.OutputStream;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;
     final HomeFragment homeFragment = new HomeFragment();
     final MapFragment mapFragment = new MapFragment();
+    final InfoFragment infoFragment = InfoFragment.get();
     private ActivityResultLauncher<Intent> takePictureLauncher;
     private Module mModule = null;
     private float mImgScaleX, mImgScaleY, mIvScaleX, mIvScaleY, mStartX, mStartY;
@@ -128,6 +132,10 @@ public class MainActivity extends AppCompatActivity
             return true;
         }
         else if (id == R.id.nav_scan) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentFrame, homeFragment)
+                    .commit();
             Intent takePictureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
                 takePictureLauncher.launch(takePictureIntent);
@@ -193,6 +201,16 @@ public class MainActivity extends AppCompatActivity
         final ArrayList<Result> results = PrePostProcessor.outputsToNMSPredictions(outputs, mImgScaleX, mImgScaleY, mIvScaleX, mIvScaleY, mStartX, mStartY);
 
         // TODO: parse results and call information fragment
+        int resultClassIndex = results.stream()
+                        .max(Comparator.comparingDouble(Result::getScore))
+                        .orElse(new Result(-1, 0f, new Rect())).classIndex;
+
+        infoFragment.setClassIndex(resultClassIndex);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentFrame, infoFragment)
+                .commit();
     }
     public static String assetFilePath(Context context, String assetName) throws IOException {
         File file = new File(context.getFilesDir(), assetName);

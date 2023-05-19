@@ -23,6 +23,10 @@ class Result {
         this.score = output;
         this.rect = rect;
     }
+
+    public float getScore(){
+        return score;
+    }
 };
 
 public class PrePostProcessor {
