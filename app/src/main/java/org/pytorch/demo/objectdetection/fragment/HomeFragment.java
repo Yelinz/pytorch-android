@@ -11,6 +11,7 @@ import org.pytorch.demo.objectdetection.R;
 
 public class HomeFragment extends Fragment {
     MapFragment mapFragment = new MapFragment();
+    InfoFragment infoFragment = InfoFragment.get();
 
     public HomeFragment(){
         // require a empty public constructor
@@ -23,20 +24,18 @@ public class HomeFragment extends Fragment {
 
 
         view.findViewById(R.id.card_aluminum).setOnClickListener(v -> {
-            /*
-            requireActivity().
-                getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentFrame, mapFragment)
-                .commit();
-             */
-            Bundle args = new Bundle();
-            args.putString("type", "aluminum");
-            // TODO: launch info fragment and from info provide a button to launch map fragment
-            mapFragment.setArguments(args);
+            infoFragment.setClassIndex(0);
             getParentFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentFrame, mapFragment)
+                    .replace(R.id.fragmentFrame, infoFragment)
+                    .commit();
+        });
+
+        view.findViewById(R.id.card_cardboard).setOnClickListener(v -> {
+            infoFragment.setClassIndex(1);
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentFrame, infoFragment)
                     .commit();
         });
 
