@@ -20,4 +20,12 @@
     <string name="aluminum_collection_reason">Aluminium Recycling saves around 95% of the energy compared to the primary production process. Aluminium can be recycled again and again.</string>
     <string name="no_recyclable">No match found</string>
     <string name="no_recyclable_helptext">The recyclable you scanned was not recognized as a material that is recyclable in your location. You may try to manually select the material in the home view.</string>
+    <string name="add_marker_header">New Recycling Location</string>
+    <string name="add_marker_name_hint">Name</string>
+    <string name="add_marker_name_description">Description</string>
+    <string name="aluminum_checkbox">Aluminum</string>
+    <string name="cardboard_checkbox">Cardboard</string>
+    <string name="recycling_location_features">What recycling is offered?</string>
+    <string name="button_confirm">Confirm</string>
+    <string name="button_cancel">Cancel</string>
 </resources>
