@@ -58,6 +58,7 @@ public class PrePostProcessor {
     static ArrayList<Result> nonMaxSuppression(ArrayList<Result> boxes, int limit, float threshold) {
 
         // Do an argsort on the confidence scores, from high to low.
+        // TODO: might be sorted the wrong way
         Collections.sort(boxes,
                 new Comparator<Result>() {
                     @Override
