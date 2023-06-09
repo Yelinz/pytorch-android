@@ -14,3 +14,4 @@ An MVP for TrashTalk with some core functionalities working.
 - Opening the app shows tiles of all recyclables and by selecting one, it shows further information about the specific recyclable.
 - After selecting a recyclable the button "Take me to recycling station" is available and by pressing it the nearest station where this type of recyclable is accepted will be show on the map and a route displayed.
 - Opening the Scan function allows the user to scan their product and afterwards it shows the type of recyclable it is. There the button "Take me to recycling station" is available again.
+- On the map recycling stations can be added if they are missing
