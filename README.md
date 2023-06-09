@@ -10,7 +10,7 @@ The scanning component uses a custom trained AI object recognition model (based 
 The map is a custom integration of OSM, in which recycling locations are shown.
 Included with the map is also an AI routing system provided by OSM which guides the user to the closest recycling station.
 
-Use cases
+## Use cases
 Opening the app shows tiles of all recyclables and by selecting one, it shows further information about the specific recyclable.
 
 After selecting a recyclable the button "Take me to recycling station" is available and by pressing it the nearest station where this type of recyclable is accepted will be show on the map and a route displayed.
