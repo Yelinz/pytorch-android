@@ -43,6 +43,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+
 public class MainActivity extends AppCompatActivity
         implements NavigationBarView.OnItemSelectedListener {
     private final int REQUEST_PERMISSIONS_REQUEST_CODE = 1;

@@ -2,93 +2,158 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:background="#41FFFFFF"
+    android:backgroundTint="#2CFFFFFF"
+    android:orientation="vertical"
+    android:theme="@style/Theme.Material3.DynamicColors.Light"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:baselineAligned="false"
-    android:theme="@style/Theme.MaterialComponents.Light">
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="0.5"
-        android:orientation="vertical">
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_aluminum"
+    app:layout_constraintTop_toTopOf="parent">
+
+    <ScrollView
+        android:layout_width="387dp"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_cardboard"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_margin="8dp"
+                android:background="#2CFFFFFF"
+                android:backgroundTint="#2CFFFFFF"
+                android:backgroundTintMode="add"
+                android:foregroundTint="#2CFFFFFF"
+                app:cardBackgroundColor="#2CFFFFFF"
+                app:checkedIconTint="#2CFFFFFF">
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
-                    <LinearLayout
+                    android:layout_height="265dp"
+                    android:background="#2CFFFFFF"
+                    android:orientation="vertical">
+
+                    <ImageView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="194dp"
-                            android:contentDescription="@string/aluminum"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/aluminium" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/aluminum"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-    </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/linearLayout2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.5"
-                android:orientation="vertical">
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/card_cardboard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp">
+                        android:layout_height="194dp"
+                        android:background="#2CFFFFFF"
+                        android:backgroundTint="#00FFFFFF"
+                        android:backgroundTintMode="add"
+                        android:contentDescription="@string/cardboard"
+                        android:foregroundTint="#2CFFFFFF"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@mipmap/cardboard_foreground" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:gravity="center"
+                        android:padding="16dp">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="194dp"
-                            android:contentDescription="@string/cardboard"
-                            android:scaleType="centerCrop"
-                            app:srcCompat="@mipmap/cardboard" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="155dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/cardboard"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-                        </LinearLayout>
+                            android:gravity="center"
+                            android:text="@string/cardboard"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
                     </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_aluminum"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_margin="8dp"
+                android:background="#2CFFFFFF"
+                android:backgroundTint="#2CFFFFFF"
+                app:cardBackgroundColor="#2CFFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="265dp"
+                    android:background="#2CFFFFFF"
+                    android:orientation="vertical">
+
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="194dp"
+                        android:background="#2CFFFFFF"
+                        android:backgroundTint="#00FFFFFF"
+                        android:backgroundTintMode="add"
+                        android:contentDescription="@string/aluminium"
+                        android:foregroundTint="#2CFFFFFF"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@mipmap/aluminium_foreground" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="155dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/aluminum"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_plastic_bottle"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_margin="8dp"
+                android:background="#2CFFFFFF"
+                android:backgroundTint="#2CFFFFFF"
+                app:cardBackgroundColor="#2CFFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="265dp"
+                    android:background="#2CFFFFFF"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/plastic_bottle"
+                        android:layout_width="match_parent"
+                        android:layout_height="194dp"
+                        android:background="#2CFFFFFF"
+                        android:backgroundTint="#2CFFFFFF"
+                        android:backgroundTintMode="add"
+                        android:contentDescription="@string/plastic_bottle"
+                        android:foregroundTint="#2CFFFFFF"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@mipmap/plastic_bottle_foreground" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="@string/plastic_bottle"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
 

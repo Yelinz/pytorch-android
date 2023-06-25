@@ -39,6 +39,14 @@ public class HomeFragment extends Fragment {
                     .commit();
         });
 
+        view.findViewById(R.id.card_plastic_bottle).setOnClickListener(v -> {
+            infoFragment.setClassIndex(2);
+            getParentFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentFrame, infoFragment)
+                    .commit();
+        });
+
         return view;
     }
 }

@@ -94,6 +94,7 @@ public class MapFragment extends AbstractMapFragment {
                             .map(editText -> editText != null ? editText.getText() : null)
                             .collect(Collectors.joining());
                     ArrayList<Integer> recyclables = new ArrayList<>();
+
                     if (Stream.of((CheckBox) popupView.findViewById(R.id.aluminum_checkbox))
                             .map(CheckBox::isChecked)
                             .findFirst()
@@ -105,6 +106,13 @@ public class MapFragment extends AbstractMapFragment {
                             .findFirst()
                             .orElse(false)){
                         recyclables.add(Recyclables.CARDBOARD.getIndex());
+                    }
+
+                    if (Stream.of((CheckBox) popupView.findViewById(R.id.plastic_bottle_checkbox))
+                            .map(CheckBox::isChecked)
+                            .findFirst()
+                            .orElse(false)){
+                        recyclables.add(Recyclables.PLASTIC.getIndex());
                     }
 
                     if (!name.isEmpty() && !recyclables.isEmpty()){
@@ -162,6 +170,13 @@ public class MapFragment extends AbstractMapFragment {
                                     Road alu_road = getShortestRoad(myLocation, Recyclables.ALUMINUM.getIndex());
                                     if (alu_road != null) {
                                         Polyline roadOverlay = RoadManager.buildRoadOverlay(alu_road, 0x800000FF, 12.5f);
+                                        mMapView.getOverlays().add(roadOverlay);
+                                    }
+                                    break;
+                                case "plastic":
+                                    Road plastic_road = getShortestRoad(myLocation, Recyclables.PLASTIC.getIndex());
+                                    if (plastic_road != null) {
+                                        Polyline roadOverlay = RoadManager.buildRoadOverlay(plastic_road, 0x800000FF, 12.5f);
                                         mMapView.getOverlays().add(roadOverlay);
                                     }
                                     break;
