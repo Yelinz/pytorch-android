@@ -9,7 +9,6 @@
     <string name="home">Home</string>
     <string name="scan">Scan</string>
     <string name="explore">Explore</string>
-    <string name="aluminum">Aluminum</string>
     <string name="cardboard">Cardboard</string>
     <string name="cardboard_collectables">Packaging cardboard\ncorrugated cardboard\ngrey board\nwashing powder cardboard</string>
     <string name="cardboard_collection_reason">Cardboard recycling makes an important contribution to the sustainable management of wood as a renewable resource.</string>
@@ -23,9 +22,16 @@
     <string name="add_marker_header">New Recycling Location</string>
     <string name="add_marker_name_hint">Name</string>
     <string name="add_marker_name_description">Description</string>
-    <string name="aluminum_checkbox">Aluminum</string>
     <string name="cardboard_checkbox">Cardboard</string>
     <string name="recycling_location_features">What recycling is offered?</string>
     <string name="button_confirm">Confirm</string>
     <string name="button_cancel">Cancel</string>
+    <string name="aluminum">Aluminium</string>
+    <string name="aluminum_checkbox">Aluminum</string>
+    <string name="aluminium" />
+    <string name="plastic_bottle">Plastic Bottle</string>
+    <string name="plastic_bottle_checkbox">Plastic Bottle</string>
+    <string name="plastic_collectables">PET bottles\n\nCollect separately: Bottles for detergent and cleaning products\n\nDo not collect:\nMilk, cream and yogurt bottles</string>
+    <string name="plastic_collection_reason">PET recycling significantly relieves the burden on the environment. Recycling PET beverage bottles reduces the impact on the climate by 75% compared to incineration in an incineration plant.</string>
+    <string name="plastic">Plastic Bottles</string>
 </resources>

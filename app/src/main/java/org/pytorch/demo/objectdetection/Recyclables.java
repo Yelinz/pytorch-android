@@ -17,7 +17,13 @@ public enum Recyclables {
             R.mipmap.cardboard,
             R.string.cardboard,
             R.string.cardboard_collectables,
-            R.string.cardboard_collection_reason);
+            R.string.cardboard_collection_reason),
+
+    PLASTIC(2,
+              R.mipmap.plastic_bottle,
+              R.string.plastic,
+              R.string.plastic_collectables,
+              R.string.plastic_collection_reason);
 
     final private int classIndex;
     final private int classImage;

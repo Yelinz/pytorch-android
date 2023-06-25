@@ -2,47 +2,66 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#03FFFFFF"
+    android:baselineAligned="false"
     android:orientation="vertical"
+    android:theme="@style/Theme.Material3.DynamicColors.Light"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    android:baselineAligned="false"
-    android:theme="@style/Theme.MaterialComponents.Light">
+    app:layout_constraintTop_toTopOf="parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="#03FFFFFF"
         android:orientation="vertical">
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
+            android:layout_margin="8dp"
+            android:background="#03FFFFFF"
+            app:cardBackgroundColor="#43FFFFFF"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="5dp">
+
             <LinearLayout
                 android:id="@+id/info_header"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:layout_gravity="center"
+                android:background="#03FFFFFF"
+                android:orientation="vertical" />
         </com.google.android.material.card.MaterialCardView>
+
         <LinearLayout
             android:id="@+id/info_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:isScrollContainer="true">
+            android:background="#03FFFFFF"
+            android:isScrollContainer="true"
+            android:orientation="vertical">
         </LinearLayout>
     </LinearLayout>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#03FFFFFF"
+        android:layout_gravity="center"
         android:orientation="vertical">
+
         <Button
             android:id="@+id/take_to_station"
             style="?android:attr/buttonStyleSmall"
             android:layout_width="match_parent"
             android:layout_height="86dp"
+            android:background="#28A534EC"
             android:text="@string/recycling_station" />
     </RelativeLayout>
 </LinearLayout>
