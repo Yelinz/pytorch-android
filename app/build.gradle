@@ -6,7 +6,8 @@ android {
     defaultConfig {
         applicationId "org.pytorch.demo.objectdetection"
         minSdkVersion 29
-        targetSdkVersion 33
+        //noinspection ExpiredTargetSdkVersion
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
@@ -16,6 +17,13 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
+            signingConfig signingConfigs.debug
+            versionNameSuffix 'release'
+        }
+        debug {
+            minifyEnabled false
+            debuggable true
         }
     }
     compileOptions {

@@ -1,5 +1,7 @@
 # TrashTalk App
 
+Link to the Repository where the code lives: https://github.com/Yelinz/pytorch-android
+
 An MVP for TrashTalk with some core functionalities working.
 1. List of recyclable material
 2. Detailed information about recyclable material
@@ -15,3 +17,14 @@ An MVP for TrashTalk with some core functionalities working.
 - After selecting a recyclable the button "Take me to recycling station" is available and by pressing it the nearest station where this type of recyclable is accepted will be show on the map and a route displayed.
 - Opening the Scan function allows the user to scan their product and afterwards it shows the type of recyclable it is. There the button "Take me to recycling station" is available again.
 - On the map recycling stations can be added if they are missing
+
+## Troubleshooting
+- A fresh install of the app might have problems navigating etc.
+  - Try closing and reopening the app
+- All permissions have to be given for the app to run
+- Unsecure developer warning
+  - open more options and click "Install anyways"
+
+---
+
+Developed by Aaron Furlan, David Schurtenberger and Yelin Zhang
