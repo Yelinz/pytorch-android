@@ -2,6 +2,8 @@
 
 Link to the Repository where the code lives: https://github.com/Yelinz/pytorch-android
 
+Made for the EPRE module of HSLU
+
 An MVP for TrashTalk with some core functionalities working.
 1. List of recyclable material
 2. Detailed information about recyclable material
